@@ -51,7 +51,7 @@ body
     background-color: rgb(255, 162, 0);
     border-width: 0px;
     border-radius: 20px;
-    margin: 10px;
+    margin: 5px 10px 5px 10px;
 }
 
 .debug
