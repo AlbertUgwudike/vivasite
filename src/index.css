@@ -27,7 +27,7 @@ body
 
 .sliderHead
 {
-    font-size: 100px;
+    font-size: 50px;
     color: rgb(255, 162, 0);
     background: rgb(50, 50, 50);
     border-left: solid orange 10px;
@@ -36,7 +36,7 @@ body
 .sliderTail
 {   
     padding-left: 100px;
-    font-size: 30px;
+    font-size: 15px;
     color: white;
     background: rgb(50, 50, 50); 
 }
