@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/AlbertU1998/vivasite.git/static/css/main.6c62e7bc.chunk.css",
-    "main.js": "/AlbertU1998/vivasite.git/static/js/main.76cd6ae4.chunk.js",
-    "main.js.map": "/AlbertU1998/vivasite.git/static/js/main.76cd6ae4.chunk.js.map",
-    "runtime-main.js": "/AlbertU1998/vivasite.git/static/js/runtime-main.8c745a12.js",
-    "runtime-main.js.map": "/AlbertU1998/vivasite.git/static/js/runtime-main.8c745a12.js.map",
-    "static/css/2.4c97ca4f.chunk.css": "/AlbertU1998/vivasite.git/static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.79ba27fb.chunk.js": "/AlbertU1998/vivasite.git/static/js/2.79ba27fb.chunk.js",
-    "static/js/2.79ba27fb.chunk.js.map": "/AlbertU1998/vivasite.git/static/js/2.79ba27fb.chunk.js.map",
-    "index.html": "/AlbertU1998/vivasite.git/index.html",
-    "static/css/2.4c97ca4f.chunk.css.map": "/AlbertU1998/vivasite.git/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.6c62e7bc.chunk.css.map": "/AlbertU1998/vivasite.git/static/css/main.6c62e7bc.chunk.css.map",
-    "static/js/2.79ba27fb.chunk.js.LICENSE.txt": "/AlbertU1998/vivasite.git/static/js/2.79ba27fb.chunk.js.LICENSE.txt"
+    "main.css": "/AlbertU1998/vivasite/static/css/main.6c62e7bc.chunk.css",
+    "main.js": "/AlbertU1998/vivasite/static/js/main.76cd6ae4.chunk.js",
+    "main.js.map": "/AlbertU1998/vivasite/static/js/main.76cd6ae4.chunk.js.map",
+    "runtime-main.js": "/AlbertU1998/vivasite/static/js/runtime-main.b6f8c55f.js",
+    "runtime-main.js.map": "/AlbertU1998/vivasite/static/js/runtime-main.b6f8c55f.js.map",
+    "static/css/2.4c97ca4f.chunk.css": "/AlbertU1998/vivasite/static/css/2.4c97ca4f.chunk.css",
+    "static/js/2.79ba27fb.chunk.js": "/AlbertU1998/vivasite/static/js/2.79ba27fb.chunk.js",
+    "static/js/2.79ba27fb.chunk.js.map": "/AlbertU1998/vivasite/static/js/2.79ba27fb.chunk.js.map",
+    "index.html": "/AlbertU1998/vivasite/index.html",
+    "static/css/2.4c97ca4f.chunk.css.map": "/AlbertU1998/vivasite/static/css/2.4c97ca4f.chunk.css.map",
+    "static/css/main.6c62e7bc.chunk.css.map": "/AlbertU1998/vivasite/static/css/main.6c62e7bc.chunk.css.map",
+    "static/js/2.79ba27fb.chunk.js.LICENSE.txt": "/AlbertU1998/vivasite/static/js/2.79ba27fb.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.8c745a12.js",
+    "static/js/runtime-main.b6f8c55f.js",
     "static/css/2.4c97ca4f.chunk.css",
     "static/js/2.79ba27fb.chunk.js",
     "static/css/main.6c62e7bc.chunk.css",
