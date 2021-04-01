@@ -17,7 +17,7 @@ const Slider = (props: sliderPropsType) =>
                 {title} 
             </button>
         );
-    }
+    } 
    
     const makeButtons = (buttons: buttonPropsType[] ) => {
         const len = buttons.length;
