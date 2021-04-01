@@ -10,9 +10,22 @@ const App = () =>
 {
     const [sliders, updateSliders] = useState([{"fileName" : "VIVA.json"}])
 
+    //function to add new slider with click
+    const handleClick = (fileName: string) => {
+        const newSliders = sliders.slice().concat([
+            {"fileName": fileName}
+        ]);
+
+        updateSliders(newSliders);
+    }
+
     const createSlider = (sliderProps: sliderPropsType) => {
         return (
-            <Slider fileName = { sliderProps.fileName } />
+            <Slider 
+                key = { sliderProps.fileName } 
+                fileName = { sliderProps.fileName } 
+                onClick = { handleClick }
+            />
         );
     }
 

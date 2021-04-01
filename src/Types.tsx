@@ -1,5 +1,6 @@
 export type sliderPropsType = {
     "fileName": string;
+    "onClick": (fileName: string) => void;
 }
 
 export type sliderDataType = {
