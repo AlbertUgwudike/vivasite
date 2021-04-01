@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/vivasite/static/css/main.6c62e7bc.chunk.css",
-    "main.js": "/vivasite/static/js/main.76cd6ae4.chunk.js",
-    "main.js.map": "/vivasite/static/js/main.76cd6ae4.chunk.js.map",
+    "main.css": "/vivasite/static/css/main.42e84edf.chunk.css",
+    "main.js": "/vivasite/static/js/main.dc5fa4c7.chunk.js",
+    "main.js.map": "/vivasite/static/js/main.dc5fa4c7.chunk.js.map",
     "runtime-main.js": "/vivasite/static/js/runtime-main.925a18b7.js",
     "runtime-main.js.map": "/vivasite/static/js/runtime-main.925a18b7.js.map",
     "static/css/2.4c97ca4f.chunk.css": "/vivasite/static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.79ba27fb.chunk.js": "/vivasite/static/js/2.79ba27fb.chunk.js",
-    "static/js/2.79ba27fb.chunk.js.map": "/vivasite/static/js/2.79ba27fb.chunk.js.map",
+    "static/js/2.1569b929.chunk.js": "/vivasite/static/js/2.1569b929.chunk.js",
+    "static/js/2.1569b929.chunk.js.map": "/vivasite/static/js/2.1569b929.chunk.js.map",
     "index.html": "/vivasite/index.html",
     "static/css/2.4c97ca4f.chunk.css.map": "/vivasite/static/css/2.4c97ca4f.chunk.css.map",
-    "static/css/main.6c62e7bc.chunk.css.map": "/vivasite/static/css/main.6c62e7bc.chunk.css.map",
-    "static/js/2.79ba27fb.chunk.js.LICENSE.txt": "/vivasite/static/js/2.79ba27fb.chunk.js.LICENSE.txt"
+    "static/css/main.42e84edf.chunk.css.map": "/vivasite/static/css/main.42e84edf.chunk.css.map",
+    "static/js/2.1569b929.chunk.js.LICENSE.txt": "/vivasite/static/js/2.1569b929.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.925a18b7.js",
     "static/css/2.4c97ca4f.chunk.css",
-    "static/js/2.79ba27fb.chunk.js",
-    "static/css/main.6c62e7bc.chunk.css",
-    "static/js/main.76cd6ae4.chunk.js"
+    "static/js/2.1569b929.chunk.js",
+    "static/css/main.42e84edf.chunk.css",
+    "static/js/main.dc5fa4c7.chunk.js"
   ]
 }
