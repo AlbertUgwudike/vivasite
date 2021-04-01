@@ -1,5 +1,5 @@
 {
-  "homepage": "https://github.com/AlbertU1998/vivasite/",
+  "homepage": "https://albertu1998.github.io/vivasite/",
   "name": "vivasite",
   "version": "0.1.0",
   "private": true,
@@ -11,6 +11,7 @@
     "@types/node": "^14.14.35",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
+    "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
