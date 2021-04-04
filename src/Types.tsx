@@ -1,8 +1,3 @@
-export type sliderPropsType = {
-    "fileName": string;
-    "onClick": (fileName: string) => void;
-}
-
 export type sliderDataType = {
     "title": string;
     "children": {
@@ -14,4 +9,17 @@ export type sliderDataType = {
 export type buttonPropsType = {
     "title": string;
     "source": string;
+}
+
+
+export type sliderPropsType = {
+    "fileName": string;
+    "depth": number;
+    "onClick": (fileName: string, depth: number) => void;
+}
+
+export type sliderDetailType = {
+    "fileName": string;
+    "depth": number;
+    "slidIn": boolean;
 }

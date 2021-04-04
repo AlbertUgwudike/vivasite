@@ -1,19 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import {sliderPropsType, buttonPropsType} from './Types'
+import {sliderPropsType, buttonPropsType } from './Types'
 import fetchSliderData from './funcs'
 
 const Slider = (props: sliderPropsType) => 
 {
+    // current slider
     const [sliderData, updateSliderData] = useState({"title": "", "children": [{"title": "", "source": ""}]});
     
-    useEffect(() => {
+    // each slider compenent fetches its own data
+    useEffect(() => {  
+        // get the data for this slider
         fetchSliderData(props.fileName)
         .then(updateSliderData);
     }, []);
 
-    const makeButton = (title:string, source:string) => {
+    const makeButton = (title: string, source: string) => {
         return (
-            <button className = "sliderOption" onClick = {() => props.onClick(source)} >
+            <button 
+                className = "sliderOption" 
+                onClick = {() => props.onClick(source, props.depth + 1) } 
+            >
                 {title} 
             </button>
         );
@@ -22,10 +28,11 @@ const Slider = (props: sliderPropsType) =>
     const makeButtons = (buttons: buttonPropsType[] ) => {
         const len = buttons.length;
         const rowCount = len % 2 ? (len + 1) / 2 : len / 2;
+
         const titleAtIdx = (idx: number) => idx < len ? buttons[idx].title : "";
         const sourceAtIdx = (idx: number) => idx < len ? buttons[idx].source : "";
 
-        return Array(rowCount).fill(0).reduce((acc, a, i) => {
+        return Array(rowCount).fill(0).reduce((acc, _, i) => {
             return acc.concat([
                 <div>
                     { makeButton(titleAtIdx(2 * i), sourceAtIdx(2 * i)) }
@@ -36,7 +43,7 @@ const Slider = (props: sliderPropsType) =>
     } 
 
     return (
-        <div className = "container-fluid debuge">
+        <div className = { "container-fluid debuge" }>
             <div  className = "row">
                 <div className = "col-md-1"></div>
                 <div className = "col-md-auto sliderHead debuge"> {sliderData.title} </div>
