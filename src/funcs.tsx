@@ -1,6 +1,7 @@
-import {sliderDataType} from './Types'
+import { sliderDataType } from './Types'
 
-const fetchSliderData = async (fileName: string): Promise<sliderDataType> => {
+type FSD = (fileName: string) => Promise<sliderDataType>;
+export const fetchSliderData: FSD = async (fileName) => {
     const options = {
         method: 'POST',
         headers: {
@@ -18,4 +19,19 @@ const fetchSliderData = async (fileName: string): Promise<sliderDataType> => {
     );
 }
 
-export default fetchSliderData
+type FC = (path: string) => Promise<string[]>;
+export const fetchChildren: FC = (path) => {
+    const options = {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8'
+        },
+        body: JSON.stringify({ path })
+    };
+
+    return (
+        fetch("http://localhost:3000/api", options)
+        .then((res) => res.json())
+    );
+}

@@ -13,13 +13,20 @@ export type buttonPropsType = {
 
 
 export type sliderPropsType = {
-    "fileName": string;
+    "path": string;
     "depth": number;
     "onClick": (fileName: string, depth: number) => void;
 }
 
 export type sliderDetailType = {
-    "fileName": string;
+    "path": string;
     "depth": number;
     "slidIn": boolean;
 }
+
+export type settingsType = {
+    "slice": number | false;
+    "append": sliderDetailType | false;
+}
+
+export type USSType = (f: (s: sliderDetailType) => boolean, arr: sliderDetailType[], sets: settingsType) => void

@@ -1,53 +1,60 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Header from './Header';
 import Slider from './Slider';
-import { sliderDetailType } from './Types'
+import { sliderDetailType, settingsType, USSType } from './Types'
 import { CSSTransition } from 'react-transition-group'
 
 const App = () => 
 {
-    const [settings, updateSettings] = useState({"doslice": false, "slice": 0, "doappend": false, "append": { "fileName": "error.json", "depth": 0, "slidIn": true }});
-    const [sliders, updateSliders] = useState([{ "fileName": "VIVA.json", "depth": 0, "slidIn": true }])
+    const [settings, updateSettings] = useState({"slice": false, "append": false} as settingsType);
+    const [sliders, updateSliders] = useState([{ "path": "VIVA", "depth": 0, "slidIn": true }]);
 
-    //function to add new slider with click
-    const slideOut = (fileName: string, depth: number) => {
-        const newSlider = { fileName, depth, "slidIn": true };
-
-        // check if we're on the bottom
-        if (depth >= sliders.length) {
-            // append new slider, set update settingd
-            const newSliders = sliders.slice().concat([newSlider]);
-            updateSliders(newSliders);
-            updateSettings({"doslice": false, "slice": 0,  "doappend": false, "append": newSlider});
-            return;
-        }
-
-        // check if we've requested a slider that already exists
-        if (fileName === sliders[depth].fileName) {
-            const newSliders = sliders.slice().map(s => {
-                if (s.depth <= depth) return s;
-                else return { "fileName": s.fileName, "depth": s.depth, "slidIn": false }
-            })
-            updateSliders(newSliders);
-            updateSettings({"doslice": true, "slice": depth + 1, "doappend": false, "append": newSlider});
-            return;
-        }
-
-        // only other possibility is having requested a slider not in the stack
-        const newSliders = sliders.slice().map(s => {
-            if (s.depth < depth) return s;
-            else return { "fileName": s.fileName, "depth": s.depth, "slidIn": false }
-        });
+    const updateSlidersAndSettings: USSType = (f, arr, sets) => {
+        const newSliders = sliders.map(s => {
+            if (f(s)) return s;
+            else return { "path": s.path, "depth": s.depth, "slidIn": false }
+        }).concat(arr);
         updateSliders(newSliders);
-        updateSettings({"doslice": true, "slice": depth, "doappend": true, "append": newSlider});
+        updateSettings(sets);
     }
 
-    // called on completetion of slide transition
+    //function to add new slider with click
+    const slideOut = (path: string, depth: number) => {
+        const newSlider = { path, depth, "slidIn": true };
+        
+        // new bottom slider requested
+        if (depth >= sliders.length) {
+            updateSlidersAndSettings(
+                (s: sliderDetailType) => true,
+                [newSlider],
+                {"slice": false, "append": false}
+            );
+        }
+
+        // request made for already present slider
+        else if (path === sliders[depth].path) {
+            updateSlidersAndSettings(
+                (s: sliderDetailType) => s.depth <= depth,
+                [],
+                {"slice": depth + 1, "append": false}
+            );
+        }
+
+        // request made for new slider, not at bottom
+        else {
+            updateSlidersAndSettings(
+                (s: sliderDetailType) => s.depth < depth,
+                [],
+                { "slice": depth, "append": newSlider}
+            );
+        }
+    }
+
+    // slice, append then update sliders after transition
     const removeThenAdd = () => {
-        console.log(settings)
-        const newSliders = sliders.slice(0, settings.doslice ? settings.slice : sliders.length)
-                                  .concat(settings.doappend ? [settings.append] : [])
-        updateSliders(newSliders);
+        const sliced = sliders.slice(0, settings.slice ? settings.slice : sliders.length);
+        const appended = sliced.concat(settings.append ? [settings.append] : []);
+        updateSliders(appended);
     }
 
     const createSlider = (sliderDetail: sliderDetailType) => {
@@ -59,11 +66,11 @@ const App = () =>
                 unmountOnExit 
                 onExited = {removeThenAdd}
                 appear
+                key = { sliderDetail.path }
             >
-                <Slider 
-                    key = { sliderDetail.fileName } 
+                <Slider  
                     depth = { sliderDetail.depth }
-                    fileName = { sliderDetail.fileName } 
+                    path = { sliderDetail.path } 
                     onClick = { slideOut }
                 />
             </CSSTransition>

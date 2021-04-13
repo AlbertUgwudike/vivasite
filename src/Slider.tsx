@@ -1,42 +1,45 @@
 import React, { useEffect, useState } from 'react'
-import {sliderPropsType, buttonPropsType } from './Types'
-import fetchSliderData from './funcs'
+import { sliderPropsType, buttonPropsType } from './Types'
+import { fetchChildren, fetchSliderData } from './funcs'
 
 const Slider = (props: sliderPropsType) => 
 {
-    // current slider
-    const [sliderData, updateSliderData] = useState({"title": "", "children": [{"title": "", "source": ""}]});
+    // title is simply the last route in the path
+    const title = props.path.split("/").pop();
+
+    // slider data includes its title and a list of its children
+    const [sliderData, updateSliderData] = useState([""]);
     
     // each slider compenent fetches its own data
     useEffect(() => {  
-        // get the data for this slider
-        fetchSliderData(props.fileName)
-        .then(updateSliderData);
+        fetchChildren(props.path).then(updateSliderData)
     }, []);
 
-    const makeButton = (title: string, source: string) => {
+    const renderButton = (route: string) => {
+        const newPath = props.path + "/" + route;
         return (
             <button 
                 className = "sliderOption" 
-                onClick = {() => props.onClick(source, props.depth + 1) } 
+                onClick = {() => props.onClick(newPath, props.depth + 1) } 
             >
-                {title} 
+                {route} 
             </button>
         );
     } 
    
-    const makeButtons = (buttons: buttonPropsType[] ) => {
-        const len = buttons.length;
+    const renderButtonGrid = (routes: string[] ) => {
+        const len = routes.length;
         const rowCount = len % 2 ? (len + 1) / 2 : len / 2;
-
-        const titleAtIdx = (idx: number) => idx < len ? buttons[idx].title : "";
-        const sourceAtIdx = (idx: number) => idx < len ? buttons[idx].source : "";
 
         return Array(rowCount).fill(0).reduce((acc, _, i) => {
             return acc.concat([
-                <div>
-                    { makeButton(titleAtIdx(2 * i), sourceAtIdx(2 * i)) }
-                    { makeButton(titleAtIdx(2 * i + 1), sourceAtIdx(2 * i + 1)) }
+                <div key = {i} className = "col-md-auto debuge">
+                    <div className = "row">
+                        { 2 * i < len     ? renderButton(routes[2 * i]) : null }
+                    </div>
+                    <div className = "row">
+                        { 2 * i + 1 < len ? renderButton(routes[2 * i + 1]) : null }
+                    </div>
                 </div>
             ])
         }, [])
@@ -46,9 +49,11 @@ const Slider = (props: sliderPropsType) =>
         <div className = { "container-fluid debuge" }>
             <div  className = "row">
                 <div className = "col-md-1"></div>
-                <div className = "col-md-auto sliderHead debuge"> {sliderData.title} </div>
-                <div className = "col sliderTail debuge"> 
-                    { makeButtons(sliderData.children) }
+                <div className = "col-md-auto sliderHead debuge"> {title} </div>
+                <div className = "col sliderTail debuge">
+                    <div className = "row">
+                        { renderButtonGrid(sliderData) }
+                    </div>
                 </div>
             </div>
         </div>
