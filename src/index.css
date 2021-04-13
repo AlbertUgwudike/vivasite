@@ -44,6 +44,7 @@ body
 .container-fluid
 {
     margin: 0px 0px 20px 0px;
+    overflow: hidden;
 }
 
 .sliderOption
@@ -57,4 +58,37 @@ body
 .debug
 {
     border: solid;
+}
+
+.display-appear
+{
+    margin-left: 100%;
+}
+
+.display-appear-active
+{
+    margin-left: 0%;
+    transition: margin-left 1s;
+}
+
+.display-enter
+{
+    margin-left: 100%;
+}
+
+.display-enter-active
+{
+    margin-left: 0%;
+    transition: margin-left 1s;
+}
+
+.display-exit
+{
+    margin-left: 0%;
+}
+
+.display-exit-active
+{
+    margin-left: 100%;
+    transition: margin-left 1s;
 }
