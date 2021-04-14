@@ -1,26 +1,30 @@
 import { useState } from 'react';
 import Header from './Header';
-import Slider from './Slider';
+import PathSlider from './PathSlider';
+import InfoSlider from './InfoSlider'
 import { sliderDetailType, settingsType, USSType } from './Types'
 import { CSSTransition } from 'react-transition-group'
 
 const App = () => 
 {
     const [settings, updateSettings] = useState({"slice": false, "append": false} as settingsType);
-    const [sliders, updateSliders] = useState([{ "path": "VIVA", "depth": 0, "slidIn": true }]);
+    const [sliders, updateSliders] = useState([{ "type": "PathSlider", "path": "VIVA", "depth": 0, "slidIn": true } as sliderDetailType]);
 
     const updateSlidersAndSettings: USSType = (f, arr, sets) => {
         const newSliders = sliders.map(s => {
             if (f(s)) return s;
-            else return { "path": s.path, "depth": s.depth, "slidIn": false }
+            else return { "type": s.type, "path": s.path, "depth": s.depth, "slidIn": false }
         }).concat(arr);
-        updateSliders(newSliders);
+        updateSliders(newSliders as sliderDetailType[]);
         updateSettings(sets);
     }
 
-    //function to add new slider with click
-    const slideOut = (path: string, depth: number) => {
-        const newSlider = { path, depth, "slidIn": true };
+    // add details of new slider to list
+    const addSlider = (path: string, depth: number) => {
+        console.log("sliders", sliders);
+        console.log("path", path);
+        const slideDirection = path.split(".").length === 2 ? "InfoSlider" : "PathSlider";
+        const newSlider: sliderDetailType = { "type": slideDirection, path, depth, "slidIn": true } ;
         
         // new bottom slider requested
         if (depth >= sliders.length) {
@@ -57,22 +61,26 @@ const App = () =>
         updateSliders(appended);
     }
 
-    const createSlider = (sliderDetail: sliderDetailType) => {
+    const renderSlider = (sliderDetail: sliderDetailType) => {
+        const slider = sliderDetail.type === "InfoSlider" ? 
+            <InfoSlider source = { sliderDetail.path } /> :
+            <PathSlider  
+                depth = { sliderDetail.depth }
+                path = { sliderDetail.path } 
+                onClick = { addSlider }
+            />;
+
         return (
             <CSSTransition 
                 in = { sliderDetail.slidIn }
                 timeout = { 1000 }
-                classNames = "display"
+                classNames = { sliderDetail.type === "PathSlider" ?  "display" : "rightdisplay" }
                 unmountOnExit 
-                onExited = {removeThenAdd}
+                onExited = { removeThenAdd }
                 appear
                 key = { sliderDetail.path }
             >
-                <Slider  
-                    depth = { sliderDetail.depth }
-                    path = { sliderDetail.path } 
-                    onClick = { slideOut }
-                />
+                { slider }
             </CSSTransition>
         );
     }
@@ -80,7 +88,7 @@ const App = () =>
     return (
         <div>
             <Header />
-            { sliders.map(createSlider) }
+            { sliders.map(renderSlider) }
         </div>
     )
 }

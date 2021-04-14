@@ -33,6 +33,21 @@ body
     border-left: solid orange 10px;
 }
 
+.info
+{
+    background: rgb(50, 50, 50);
+    border-right: solid green 10px;
+    color: white;
+}
+
+.infoHead
+{
+    font-size: 50px;
+    color: green;
+    background: rgb(50, 50, 50);
+    border-right: solid green 10px;
+}
+
 .sliderTail
 {   
     padding-left: 100px;
@@ -90,5 +105,38 @@ body
 .display-exit-active
 {
     margin-left: 100%;
+    transition: margin-left 1s;
+}
+
+.rightdisplay-appear
+{
+    margin-left: -1000px;
+}
+
+.rightdisplay-appear-active
+{
+    margin-left: 0px;
+    transition: margin-left 1s;
+}
+
+.rightdisplay-enter
+{
+    margin-left: -1000px;
+}
+
+.rightdisplay-enter-active
+{
+    margin-left: 0px;
+    transition: margin-left 1s;
+}
+
+.rightdisplay-exit
+{
+    margin-left: 0px;
+}
+
+.rightdisplay-exit-active
+{
+    margin-left: -1000px;
     transition: margin-left 1s;
 }
