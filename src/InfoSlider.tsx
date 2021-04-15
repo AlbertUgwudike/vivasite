@@ -27,7 +27,7 @@ const InfoSlider = (props: infoSliderPropsType) => {
             </div>
             <div  className = "row">
                 <div className = "col info debuge">
-                        { Object.entries(sliderData).map(renderInfo) }
+                        { Object.entries(sliderData).slice(2).map(renderInfo) }
                 </div>
                 <div className = "col-md-1"></div>
             </div>

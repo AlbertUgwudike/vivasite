@@ -38,6 +38,7 @@ body
     background: rgb(50, 50, 50);
     border-right: solid green 10px;
     color: white;
+    padding: 50px;
 }
 
 .infoHead
@@ -83,7 +84,7 @@ body
 .display-appear-active
 {
     margin-left: 0%;
-    transition: margin-left 1s;
+    transition: margin-left 500ms;
 }
 
 .display-enter
@@ -94,7 +95,7 @@ body
 .display-enter-active
 {
     margin-left: 0%;
-    transition: margin-left 1s;
+    transition: margin-left 500ms;
 }
 
 .display-exit
@@ -105,38 +106,38 @@ body
 .display-exit-active
 {
     margin-left: 100%;
-    transition: margin-left 1s;
+    transition: margin-left 500ms;
 }
 
 .rightdisplay-appear
 {
-    margin-left: -1000px;
+    margin-left: -100%;
 }
 
 .rightdisplay-appear-active
 {
-    margin-left: 0px;
-    transition: margin-left 1s;
+    margin-left: 0%;
+    transition: margin-left 500ms;
 }
 
 .rightdisplay-enter
 {
-    margin-left: -1000px;
+    margin-left: -100%;
 }
 
 .rightdisplay-enter-active
 {
-    margin-left: 0px;
-    transition: margin-left 1s;
+    margin-left: 0%;
+    transition: margin-left 500ms;
 }
 
 .rightdisplay-exit
 {
-    margin-left: 0px;
+    margin-left: 0%;
 }
 
 .rightdisplay-exit-active
 {
-    margin-left: -1000px;
-    transition: margin-left 1s;
+    margin-left: -100%;
+    transition: margin-left 500ms;
 }
